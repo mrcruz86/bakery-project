@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bakery">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+  </head>
+  <body>
+    <div ng-controller="mainCtrl">
+      <header class="branding">
+        <h1><a href="#" ng-click="reset()">{{title}}</a></h1>
+      </header>
+      <nav class="filter-section">
+        <div class="filter-section__search">
+          <input type="text" name="name" ng-model="keyword">
+          <button type="button" name="btn-search" ng-click="updateItems()"><i class="fa fa-2x fa-search"></i></button>
+        </div>
+        <ul class="filter-section__filter-cat">
+          <li ng-class="{'category-active' : ($scope.category === 'breads')}" ng-click="setCategory('breads')">Breads</li>
+          <li ng-class="($scope.category === 'brownies') ? 'category-active' : ''" ng-click="setCategory('brownies')">Brownies</li>
+          <li ng-class="($scope.category === 'cookies') ? 'category-active' : ''" ng-click="setCategory('cookies')">Cookies</li>
+          <li ng-class="($scope.category === 'cakes') ? 'category-active' : ''" ng-click="setCategory('cakes')">Cakes</li>
+          <li ng-class="($scope.category === 'candy') ? 'category-active' : ''" ng-click="setCategory('candy')">Candy</li>
+        </ul>
+        <div class="filter-section__filter-opt">
+          <button ng-class="{ 'filter-active' : gluten }" type="button" name="btn-gluten-free" ng-click="gluten = !gluten"><i class="fa fa-leaf"></i>Gluten Free</button>
+          <button ng-class="{ 'filter-active' : vegan }" type="button" name="btn-vegan" ng-click="vegan = !vegan"><i class="fa fa-envira"></i>Vegan</button>
+        </div>
+      </nav>
+      <main>
+        <ul class="items-list">
+          <li class="items-list__item" ng-repeat="item in items | optionsFilter:vegan:gluten">
+            <div class="image-wrapper">
+              <img src="{{item.image_url}}" alt="" />
+            </div>
+            <section class="items-list__item-content">
+              <h2>{{item.name}}</h2>
+              <p>{{item.price | currency:"$"}}</p>
+              <p>{{item.description}}</p>
+              <ul class="items-list__item-options">
+                <li><p ng-if="item.is_vegan"><i class="fa fa-envira"></i>Vegan</p></li>
+                <li><p ng-if="item.is_gluten_free"><i class="fa fa-leaf"></i>Gluten Free</p></li>
+              </ul>
+
+            </section>
+          </li>
+        </ul>
+      </main>
+    </div>
+  </body>
+  <script src="./js/main.js" charset="utf-8"></script>
+</html>

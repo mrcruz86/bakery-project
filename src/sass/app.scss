@@ -1,0 +1,251 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500);
+@import url(https://fonts.googleapis.com/css?family=Chela+One);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 > a {
+  text-decoration: none;
+  font-size: 2rem;
+  font-family: 'Chela One', cursive;
+  color: #00CDCD;
+}
+
+button {
+  border: none;
+  background: #ffffff;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.branding {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  background: #ffffff;
+}
+
+.category-active {
+  text-decoration: underline;
+}
+
+.filter-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 3rem 40px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #d0d0d0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  background: #ffffff;
+
+  .filter-section__search {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    input {
+      border: none;
+      outline: none;
+      padding: 3px 0;
+      width: 60vw;
+      height: 30px;
+      font-size: 1.5rem;
+      min-width: 280px;
+      text-align: center;
+      border-bottom: 1px solid #d0d0d0;
+      color: #6d6d6d;
+      text-indent: 20px;
+    }
+
+    button {
+      padding-bottom: 5px;
+      border-bottom: 1px solid #d0d0d0;
+
+      i {
+        color: #00CDCD;
+      }
+    }
+  }
+
+  .filter-section__filter-cat {
+    list-style: none;
+    display: flex;
+    padding: 10px;
+
+    li {
+      margin: 1.5vmax;
+      width: 8vmax;
+      font-size: 2vmax;
+      font-family: 'Chela One', cursive;
+      color: #00CDCD;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .filter-section__filter-opt {
+    display: flex;
+    justify-content: center;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 8rem;
+      height: 2rem;
+      border: 2px solid #00CDCD;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: 'Chela One', cursive;
+      color: #00CDCD;
+      margin: 0 5px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background: #00CDCD;
+        color: #ffffff;
+      }
+    }
+
+    .filter-active {
+      background: #00CDCD;
+      color: #ffffff;
+    }
+  }
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding-top: 210px;
+  display: flex;
+  justify-content: center;
+}
+
+.items-list {
+  padding: 10px 8px;
+  list-style: none;
+  color: #6d6d6d;
+  width: 98vw;
+
+  .items-list__item {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 10px 2px;
+    border: 1px solid #d0d0d0;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+    .image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      height: 250px;
+
+      img {
+        height: auto;
+        width: 140vw;
+      }
+    }
+
+    .items-list__item-content {
+      padding: 5px;
+
+      h2 {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 6px;
+      }
+
+      p {
+        font-size: 0.8rem;
+        font-weight: 300;
+        margin-bottom: 6px;
+      }
+    }
+
+    .items-list__item-options {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 5px;
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+
+      p {
+        margin: 0 5px;
+        padding: 5px 10px;
+        background: #00CDCD;
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+@media (min-width: '624px') {
+  main {
+    padding-top: 220px;
+  }
+
+  .items-list {
+    width: 624px;
+
+    .items-list__item {
+      max-width: 300px;
+
+      .image-wrapper {
+
+        img {
+          height: 250px;
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: '928px') {
+  main {
+    padding-top: 250px;
+  }
+
+  .items-list {
+    width: 928px;
+
+    .items-list__item {
+      max-width: 300px;
+    }
+  }
+}
